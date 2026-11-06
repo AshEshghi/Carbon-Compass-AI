@@ -1,59 +1,35 @@
-import re
-from collections.abc import Iterable, Mapping
 try:
     from .processor_base import CarbonProcessor
 except ImportError:
     from processor_base import CarbonProcessor
+
+
 def parse_scope(value):
-    """Accept 1, 2, 3 or strings like 'Scope 2'."""
-    if isinstance(value, bool):
-        raise ValueError("A scope must be 1, 2 or 3")
-    if isinstance(value, int) and value in (1, 2, 3):
-        return value
     if isinstance(value, str):
-        match = re.fullmatch(r"(?:scope\s*[-_:]?\s*)?([123])", value.strip(), re.I)
-        if match:
-            return int(match.group(1))
-    raise ValueError("A scope must be 1, 2 or 3")
+        value = value.strip().lower().replace("scope", "").replace("-", "").strip()
+    if isinstance(value, bool) or str(value) not in ("1", "2", "3"):
+        raise ValueError("Scope must be 1, 2, or 3")
+    return int(value)
+
+
 class ScopeFilter(CarbonProcessor):
-    """Keep only events belonging to the configured GHG scopes."""
-
     def __init__(self, allowed_scopes=(2,)):
-        self.initialize(allowed_scopes)
+        self.allowed_scopes = {parse_scope(value) for value in allowed_scopes}
+        if not self.allowed_scopes:
+            raise ValueError("Select at least one scope")
 
-    def initialize(self, allowed_scopes=(2,)):
-        self.set_allowed_scopes(allowed_scopes)
+    def process(self, record):
+        if not isinstance(record, dict):
+            raise TypeError("Record must be a dictionary")
 
-    def get_allowed_scopes(self):
-        return frozenset(self._allowed_scopes)
-
-    def set_allowed_scopes(self, scopes):
-        if isinstance(scopes, (str, bytes)):
-            scopes = (scopes,)
-        try:
-            selected = frozenset(parse_scope(scope) for scope in scopes)
-        except TypeError as error:
-            raise ValueError("allowed_scopes must be iterable") from error
-        if not selected:
-            raise ValueError("At least one scope must be selected")
-        self._allowed_scopes = selected
-
-    def process(self, record: Mapping) -> dict | None:
-        if not isinstance(record, Mapping):
-            raise TypeError("Each event must be a dictionary-like record")
-        tag = record.get("scope", record.get("scope_tag"))
-        if tag is None:
-            raise ValueError("Missing scope tag; add scope=2 for purchased electricity")
-        normalized_scope = parse_scope(tag)
-        if normalized_scope not in self._allowed_scopes:
+        scope = parse_scope(record.get("scope", record.get("scope_tag")))
+        if scope not in self.allowed_scopes:
             return None
-        result = dict(record)
-        result["scope"] = normalized_scope
+        result = record.copy()
+        result["scope"] = scope
         return result
-
-    def filter_stream(self, records: Iterable):
-        """Generate accepted records one at a time (does not modify source data)."""
+    def filter_stream(self, records):
         for record in records:
-            filtered = self.process(record)
-            if filtered is not None:
-                yield filtered
+            result = self.process(record)
+            if result is not None:
+                yield result
