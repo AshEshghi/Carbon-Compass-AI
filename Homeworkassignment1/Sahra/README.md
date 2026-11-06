@@ -1,7 +1,7 @@
 # Hometask 1 – Object-Oriented Programming
 
 **Project:** Carbon Compass AI – Enterprise Carbon Footprint Tracker & AI Assistant  
-**Student:** Sahra Özçelik  
+**Student:** Sahra Ozcelik  
 **Subsystem:** Data Management
 
 ## 1. Project Overview
