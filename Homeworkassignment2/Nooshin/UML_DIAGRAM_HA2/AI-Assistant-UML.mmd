@@ -1,0 +1,58 @@
+classDiagram
+    class AssistantProcessor {
+        <<abstract>>
+        +process(record)*
+        +__add__(other)
+    }
+
+    class CarbonRecordFilter {
+        +process(record)
+    }
+
+    class InsightProcessor {
+        -ai_service
+        +__init__(ai_service)
+        +process(record)
+    }
+
+    class AIService {
+        -model
+        +get_model()
+        +set_model(model)
+        +build_prompt(consumption, emissions)
+        +generate_response(prompt)
+    }
+
+    class Pipeline {
+        +processors
+        +__init__(processors)
+        +__add__(other)
+        +process(record)
+    }
+
+    class EventStream {
+        -events
+        +__init__(events)
+        +__iter__()
+        +__next__()
+    }
+
+    class ChatMessage {
+        -role
+        -content
+    }
+
+    class ContextProvider {
+        -database_manager
+        -emissions
+        +get_database_manager()
+        +set_database_manager(database_manager)
+        +get_emissions()
+        +set_emissions(emissions)
+        +get_consumption()
+    }
+
+    AssistantProcessor <|-- CarbonRecordFilter
+    AssistantProcessor <|-- InsightProcessor
+    InsightProcessor --> AIService : uses
+    Pipeline o-- AssistantProcessor : composes
