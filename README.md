@@ -105,7 +105,7 @@ The team developed subsystem demonstrations and tests to check the behavior of t
 
 The presentation explains the responsibilities of each subsystem, the UML class relationships, and how the implemented Python methods demonstrate object-oriented programming concepts.
 
-**Team presentation video (3–5 minutes): [ADD VIDEO LINK BEFORE SUBMISSION]**
+**Team presentation video: [https://drive.google.com/file/d/1wAvwR3xOCaFmj7HsgYlyFiCsoA9QhWEw/view?usp=sharing]**
 
 ## 8. Project Status
 
