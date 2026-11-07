@@ -46,7 +46,7 @@ The subsystem includes `CSVImporter`, `DataValidator`, `DatabaseManager`, and `C
 
 These classes handle importing CSV files, validating electricity data, representing consumption records, and managing database storage.
 
-![Data Management UML](Homeworkassignment1/UML_Diagrams/Data_Management_UML.png)
+![Data Management UML](Homeworkassignment1/Sahra/Data_Management_UML1.png)
 
 ### 4.2 Carbon Calculation & Analytics — Ashley
 
