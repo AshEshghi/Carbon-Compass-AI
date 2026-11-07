@@ -123,11 +123,9 @@ A Python virtual environment is optional. `.venv/`, `__pycache__/`, `.pyc`, and 
 
 ## 8. Team Presentation Video
 
-**HA4 presentation video:** [Watch our HA4 presentation](PASTE_VIDEO_LINK_HERE)
+**HA4 presentation video:** [https://drive.google.com/file/d/1AbZbYjcyw1Xe5I93p1B2S9w2xd273QiP/view]
 
 The video demonstrates the custom exception classes, Flask error handling, representative unit tests, and how the Data Management and Analytics components relate to the project.
-
-> **Before submission:** Replace `PASTE_VIDEO_LINK_HERE` with the actual accessible video URL.
 
 ## 9. Submission Notes
 
