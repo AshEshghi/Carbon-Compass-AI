@@ -149,19 +149,9 @@ python -m unittest -v test_analytics.py
 
 The current uploaded analytics test file defines **six tests** for totals, empty data, invalid consumption, invalid factors, a mocked Flask database request, and invalid building IDs. A passing live MySQL integration test must be verified separately on a machine with MySQL running.
 
-## 9. Integration With the Data Management API
+## 9. Team Video Presentation
 
-After ensuring that Python can import Ashley's `analytics_api.py`, Sahra can register the exported Flask Blueprint in her existing app:
-
-```python
-# Import analytics_bp from Ashley's analytics_api module.
-app.config["MYSQL_PASSWORD"] = password
-app.register_blueprint(analytics_bp)
-```
-
-The actual import statement depends on the final repository layout. Once registered, both `/records` and `/analytics` can be served through **port 5050**. The standalone analytics server on port 5051 is no longer needed.
-
-Both routes use the same MySQL database, but the shared server and live database operations should be tested together before the group claims full integration.
+**Unified team presentation: [https://drive.google.com/file/d/1zq2NoJae4KMYpOdRvpMNgbvwfH-8sbTN/view?usp=sharing]**
 
 ## 10. Submission Status and Limitations
 
