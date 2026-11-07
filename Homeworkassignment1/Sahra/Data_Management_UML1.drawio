@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" scale="1" border="0">
+  <diagram name="Page-1" id="Civr4O6Ub3gdzGYTnUKy">
+    <mxGraphModel dx="1583" dy="1034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1530" pageHeight="920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-1" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fontSize=16;" value="ConsumptionRecord" vertex="1">
+          <mxGeometry height="357" width="540" x="495" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-5" parent="Iuv0-Qb_3OAH1oR9QoJq-1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=14;" value="&lt;div&gt;- record_id: int [0..1]&lt;/div&gt;&lt;div&gt;- building_id: int&lt;/div&gt;&lt;div&gt;- timestamp: str&lt;/div&gt;&lt;div&gt;- electricity_kwh: float&lt;/div&gt;" vertex="1">
+          <mxGeometry height="102" width="540" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-6" parent="Iuv0-Qb_3OAH1oR9QoJq-1" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="8" width="540" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-8" parent="Iuv0-Qb_3OAH1oR9QoJq-1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=14;" value="&lt;div&gt;+ __init__(record_id, building_id, timestamp, electricity_kwh)&lt;/div&gt;&lt;div&gt;+ get_record_id(): int [0..1]&lt;/div&gt;&lt;div&gt;+ set_record_id(new_id)&lt;/div&gt;&lt;div&gt;+ get_building_id(): int&lt;/div&gt;&lt;div&gt;+ set_building_id(new_id)&lt;/div&gt;&lt;div&gt;+ get_timestamp(): str&lt;/div&gt;&lt;div&gt;+ set_timestamp(new_timestamp)&lt;/div&gt;&lt;div&gt;+ get_electricity_kwh(): float&lt;/div&gt;&lt;div&gt;+ set_electricity_kwh(new_value)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="217" width="540" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-10" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fontSize=16;" value="DataValidator" vertex="1">
+          <mxGeometry height="265" width="540" x="850" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-12" parent="Iuv0-Qb_3OAH1oR9QoJq-10" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=14;" value="&lt;div&gt;- is_valid: bool&lt;/div&gt;" vertex="1">
+          <mxGeometry height="33" width="540" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-15" parent="Iuv0-Qb_3OAH1oR9QoJq-10" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="8" width="540" y="63" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-17" parent="Iuv0-Qb_3OAH1oR9QoJq-10" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=14;" value="&lt;div&gt;+ __init__()&lt;/div&gt;&lt;div&gt;+ get_is_valid(): bool&lt;/div&gt;&lt;div&gt;+ set_is_valid(value: bool)&lt;/div&gt;&lt;div&gt;+ validate_kwh(kwh: float): bool&lt;/div&gt;&lt;div&gt;+ check_missing(value): bool&lt;/div&gt;&lt;div&gt;+ check_duplicate(record, records): bool&lt;/div&gt;&lt;div&gt;+ check_numeric(value): bool&lt;/div&gt;&lt;div&gt;+ validate_timestamp(timestamp: str): bool&lt;/div&gt;" vertex="1">
+          <mxGeometry height="194" width="540" y="71" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-18" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fontSize=16;" value="CSVImporter" vertex="1">
+          <mxGeometry height="196" width="205" x="630" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-20" parent="Iuv0-Qb_3OAH1oR9QoJq-18" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=14;" value="&lt;div&gt;+ file_path: Path&lt;/div&gt;" vertex="1">
+          <mxGeometry height="33" width="205" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-23" parent="Iuv0-Qb_3OAH1oR9QoJq-18" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="8" width="205" y="63" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-25" parent="Iuv0-Qb_3OAH1oR9QoJq-18" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=14;" value="&lt;div&gt;+ __init__(file_path)&lt;/div&gt;&lt;div&gt;+ get_file_path()&lt;/div&gt;&lt;div&gt;+ set_file_path(new_path)&lt;/div&gt;&lt;div&gt;+ read_csv(): list&lt;/div&gt;&lt;div&gt;+ check_columns(): bool&lt;/div&gt;" vertex="1">
+          <mxGeometry height="125" width="205" y="71" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-26" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;fontSize=16;" value="DatabaseManager" vertex="1">
+          <mxGeometry height="242" width="700" x="30" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-28" parent="Iuv0-Qb_3OAH1oR9QoJq-26" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=14;" value="&lt;div&gt;- db_path: Path&lt;/div&gt;" vertex="1">
+          <mxGeometry height="33" width="700" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-31" parent="Iuv0-Qb_3OAH1oR9QoJq-26" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="8" width="700" y="63" as="geometry" />
+        </mxCell>
+        <mxCell id="Iuv0-Qb_3OAH1oR9QoJq-32" parent="Iuv0-Qb_3OAH1oR9QoJq-26" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=14;" value="&lt;div&gt;+ __init__(db_path: Path)&lt;/div&gt;&lt;div&gt;+ get_db_path(): Path&lt;/div&gt;&lt;div&gt;+ set_db_path(new_path: Path): None&lt;/div&gt;&lt;div&gt;+ create_table(): None&lt;/div&gt;&lt;div&gt;+ save_record(building_id: int, timestamp: str, electricity_kwh: float): int&lt;/div&gt;&lt;div&gt;+ fetch_records(): list[dict]&lt;/div&gt;&lt;div&gt;+ fetch_records_by_date(start_date: str, end_date: str): list[dict]&lt;/div&gt;" vertex="1">
+          <mxGeometry height="171" width="700" y="71" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
