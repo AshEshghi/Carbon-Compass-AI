@@ -1,0 +1,4 @@
+Flask==FLASK_VERSION
+requests==2.34.2
+pytest==9.2.0
+mysql-connector-python==MYSQL_VERSION
