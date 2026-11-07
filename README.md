@@ -1,61 +1,114 @@
-
 # Carbon Compass AI
 
-Enterprise Carbon Footprint Tracker & AI Assistant
+### Enterprise Carbon Footprint Tracker & AI Assistant
 
-## Project Overview
+**FH Dortmund | Python Compact Course | Homework Assignment 1 — Object-Oriented Programming**
 
-A Python application for tracking building electricity
-consumption, estimating carbon emissions, analyzing
-monthly trends, and providing AI sustainability advice.
+## 1. Project Overview
 
-## Team Members
+Carbon Compass AI is a Python-based capstone project designed to help organizations record building electricity consumption, estimate associated greenhouse gas emissions, view analytical summaries, and obtain sustainability advice.
 
-| Member | Subsystem |
-|---|---|
-| Sahra Ozcelik | Data Management |
-| Ashley Eshghi | Carbon Calculation & Analytics |
-| Nooshin Janizadeh | AI Sustainability Assistant |
-| Büsra Aydin | Web Interface |
+Our initial implementation focuses on **one building and electricity consumption (kWh)**.
 
-## Technologies
+Homework Assignment 1 establishes the project's object-oriented structure. Each team member implements classes for an assigned subsystem, using constructors, initialization methods, getters/setters, and clearly defined responsibilities. The subsystems are designed to work together as the project develops.
 
-- Python
-- Flask
-- SQLAlchemy
-- SQLite / MySQL
-- Pandas and NumPy
-- Streamlit and Plotly
-- OpenAI API
-- Pytest
-- Docker
+## 2. Team Overview
 
-## System Design
+| Team member | Assigned subsystem | Main responsibility |
+|---|---|---|
+| Sahra Özçelik | Data Management | CSV import, validation, consumption records, and storage |
+| Ashley Eshghi | Carbon Calculation & Analytics | Emission factors, CO₂e calculations, aggregation, and reports |
+| Nooshin Janizadeh | AI Sustainability Assistant | Prompt context, AI responses, and chat messages |
+| Büşra Aydın | Web Interface | Application navigation, forms, dashboards, and display pages |
 
-Add the four implemented UML class diagrams here.
+## 3. System Architecture
 
-GitHub supports rendering Mermaid diagrams in Markdown.
+The planned flow between the four subsystems is:
 
-## Installation and Running
+```mermaid
+flowchart LR
+    A["Data Management"] -->|"Validated electricity records"| B["Carbon Calculation & Analytics"]
+    B -->|"Emission summaries"| C["AI Sustainability Assistant"]
+    B -->|"Calculated results"| D["Web Interface"]
+    A -->|"Stored records"| D
+    C -->|"Recommendations"| D
+```
 
-Add verified installation commands and instructions
-for starting the application here.
+This diagram illustrates the intended data flow between the subsystems. Full integration is addressed in subsequent development stages.
 
-## Homework Assignments
+## 4. UML Class Diagrams
 
-- HA1: Object-Oriented Programming
-- HA2: Real-Time Data Processing
-- HA3: Web APIs and Database Access
-- HA4: Exception Handling and Unit Tests
+The following UML diagrams document the class structure and relationships of the four subsystems. Each team member's individual folder also contains their implementation and original UML files.
 
-## Team Video Presentation
+### 4.1 Data Management — Sahra
 
-[Watch our presentation](INSERT_VIDEO_URL_HERE)
+The subsystem includes `CSVImporter`, `DataValidator`, `DatabaseManager`, and `ConsumptionRecord`.
 
-## Testing
+These classes handle importing CSV files, validating electricity data, representing consumption records, and managing database storage.
 
-Document how to run the automated tests.
+![Data Management UML](Homeworkassignment1/UML_Diagrams/Data_Management_UML.png)
 
-## Project Status
+### 4.2 Carbon Calculation & Analytics — Ashley
 
-Development in progress.
+The subsystem includes `EmissionFactor`, `BaseCalculator`, `CarbonCalculator`, `EmissionResult`, and `AnalyticsService`, alongside the shared `ConsumptionRecord` class.
+
+`CarbonCalculator` inherits from the abstract `BaseCalculator` class. It uses validated consumption records and emission factors to create calculated emission results, which are then processed by `AnalyticsService`.
+
+![Carbon Calculation and Analytics UML](Homeworkassignment1/UML_Diagrams/Carbon_Analytics_UML.png)
+
+### 4.3 AI Sustainability Assistant — Nooshin
+
+The subsystem contains `AIService`, `ContextProvider`, and `ChatMessage`.
+
+These classes support preparing sustainability context, generating AI responses, and representing chat messages. `ContextProvider` also depends on the Data Management interface.
+
+![AI Sustainability Assistant UML](Homeworkassignment1/UML_Diagrams/AI_Assistant_UML.png)
+
+### 4.4 Web Interface — Büşra
+
+The subsystem contains `AppController`, `DashboardPage`, `DataUploadPage`, `AnalyticsPage`, and `AssistantPage`.
+
+These classes organize navigation, activity upload, emissions visualization, and interaction with the AI Assistant. The Streamlit `app.py` module serves as the interface entry point.
+
+![Web Interface UML](Homeworkassignment1/UML_Diagrams/Web_Interface_UML.png)
+
+## 5. Object-Oriented Design
+
+The subsystems demonstrate several object-oriented programming concepts:
+
+- **Constructors and initialization:** Objects are initialized with defined attributes and values.
+- **Encapsulation:** Getter and setter methods allow controlled access to class attributes.
+- **Abstraction:** The Carbon Calculation subsystem includes an abstract `BaseCalculator`.
+- **Inheritance:** `CarbonCalculator` inherits from `BaseCalculator` and implements its calculation interface.
+- **Separation of responsibilities:** Data storage, calculations, AI operations, and the user interface are organized into separate subsystems.
+
+## 6. Repository Organization
+
+```text
+Homeworkassignment1/
+├── Sahra/         # Data Management
+├── Ashley/        # Carbon Calculation & Analytics
+├── Nooshin/       # AI Sustainability Assistant
+├── Busra/         # Web Interface
+└── UML_Diagrams/  # Rendered diagrams for this README
+```
+
+Each member's folder contains their assigned subsystem implementation, including Python classes and supporting files.
+
+Individual README files provide further technical explanations and, where available, demonstration and testing instructions.
+
+The `ConsumptionRecord` class is shared between Data Management and Analytics to maintain a consistent data structure.
+
+## 7. Demonstration and Testing
+
+The team developed subsystem demonstrations and tests to check the behavior of the implemented classes.
+
+The presentation explains the responsibilities of each subsystem, the UML class relationships, and how the implemented Python methods demonstrate object-oriented programming concepts.
+
+**Team presentation video (3–5 minutes): [ADD VIDEO LINK BEFORE SUBMISSION]**
+
+## 8. Project Status
+
+Homework Assignment 1 establishes the object-oriented foundation of Carbon Compass AI.
+
+The complete data-processing pipeline, integrated web API, extended exception handling, and final application integration are addressed in subsequent homework assignments and capstone development.
