@@ -207,9 +207,9 @@ Each member's folder contains the corresponding source code, and where supplied,
 
 ## 9. Team Video Presentation
 
-**Unified team presentation (3–5 minutes): [ADD VIDEO LINK BEFORE SUBMISSION]**
+**Unified team presentation: [https://drive.google.com/file/d/1zq2NoJae4KMYpOdRvpMNgbvwfH-8sbTN/view?usp=sharing]**
 
-Every member will briefly explain their classes, show the corresponding UML diagram, and demonstrate the relevant Python implementation. The final video link must be accessible to the professor.
+Every member briefly explains their classes, show the corresponding UML diagram, and demonstrate the relevant Python implementation.
 
 ## 10. Project Status
 
