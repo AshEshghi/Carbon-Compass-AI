@@ -1,0 +1,22 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="BusraHA2Pipeline" name="ProcessingPipeline UML">
+    <mxGraphModel dx="1397" dy="972" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pipeline" parent="1" style="swimlane;fontStyle=1;align=center;startSize=40;horizontal=1;rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;swimlaneFillColor=#FFFFFF;strokeColor=#222222;fontColor=#111111;fontSize=18;container=1;collapsible=0;" value="ProcessingPipeline" vertex="1">
+          <mxGeometry height="310" width="590" x="130" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="attributes" parent="pipeline" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=none;fillColor=none;fontColor=#111111;fontSize=16;spacingLeft=10;" value="+ steps: list" vertex="1">
+          <mxGeometry height="35" width="580" x="4" y="47" as="geometry" />
+        </mxCell>
+        <mxCell id="divider" parent="pipeline" style="line;strokeWidth=1;strokeColor=#222222;" value="" vertex="1">
+          <mxGeometry height="1" width="590" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="methods" parent="pipeline" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;strokeColor=none;fillColor=none;fontColor=#111111;fontSize=16;spacingLeft=10;spacingTop=7;" value="+ __init__(steps=None)&#xa;+ get_steps(): list&#xa;+ __or__(processor): ProcessingPipeline&#xa;+ process(record): dict | None&#xa;+ process_stream(records): generator" vertex="1">
+          <mxGeometry height="196" width="580" x="4" y="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
