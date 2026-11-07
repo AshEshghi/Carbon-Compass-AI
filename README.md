@@ -1,9 +1,6 @@
 # Carbon Compass AI
 
-### Homework Assignment 4 — Exception Handling and Unit Testing
-
-**FH Dortmund | Python Compact Course | Team Project**  
-**GitHub branch:** `Homeworkassignment004`
+### Homework Assignment 4
 
 ## 1. Project Overview
 
