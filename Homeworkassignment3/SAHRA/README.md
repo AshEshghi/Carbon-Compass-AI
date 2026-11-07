@@ -1,7 +1,7 @@
 # Hometask 3 – Data Management
 
 **Project:** Carbon Compass AI  
-**Student:** Sahra Özçelik  
+**Student:** Sahra Ozcelik  
 **Subsystem:** Data Management
 
 ## Overview
