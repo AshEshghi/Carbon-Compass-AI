@@ -1,11 +1,7 @@
-"""Demonstration of carbon analytics using the shared Data Management model."""
-
 from Data_Management.consumption_record import ConsumptionRecord
 from Carbon_Calculation_Analytics.analytics_service import AnalyticsService
 from Carbon_Calculation_Analytics.carbon_calculator import CarbonCalculator
 from Carbon_Calculation_Analytics.emission_factor import EmissionFactor
-
-
 def main():
     # Sample values are for demonstrating the software, not official accounting.
     sample_rows = [
@@ -16,12 +12,10 @@ def main():
     # Sahra's model is also supported, not just the database dictionaries.
     shared_record = ConsumptionRecord(None, 1, "2026-03-16", 50.0)
     sample_rows.append(shared_record)
-
     factor = EmissionFactor(1, "DEMO", 2026, 0.4, "Hypothetical example factor")
     calculator = CarbonCalculator()
     results = [calculator.calculate(row, factor) for row in sample_rows]
     analytics = AnalyticsService(results)
-
     print("Factor source:", factor.get_source())
     print("Monthly emissions (kg CO2e):", analytics.aggregate_monthly())
     print("Total electricity (kWh):", analytics.total_electricity_kwh())
@@ -30,7 +24,5 @@ def main():
     print("February to March:", analytics.compare_periods("2026-02", "2026-03"))
     print("Chart data:", analytics.prepare_chart_data())
     print("Calculated records:", calculator.get_calculation_count())
-
-
 if __name__ == "__main__":
     main()
