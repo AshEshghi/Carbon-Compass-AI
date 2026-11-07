@@ -5,9 +5,12 @@ from getpass import getpass
 from data_management_error import DataManagementError
 
 app = Flask(__name__)
+
+
 @app.errorhandler(DataManagementError)
 def handle_data_error(error):
     return jsonify({"error": str(error)}), 400
+
 
 password = getpass("MySQL password: ")
 
@@ -54,13 +57,20 @@ def add_record():
 
     if any(field not in data for field in required):
         return jsonify({"error": "Missing required fields"}), 400
+
     try:
         kwh = float(data["electricity_kwh"])
+
         if kwh < 0:
-            raise DataManagementError("Electricity consumption cannot be negative")
+            raise DataManagementError(
+                "Electricity consumption cannot be negative"
+            )
+
     except (ValueError, TypeError):
-        return jsonify({"error": "Electricity consumption must be a number"}), 400
-    
+        return jsonify({
+            "error": "Electricity consumption must be a number"
+        }), 400
+
     connection = mysql.connector.connect(
         host="localhost",
         user="root",
@@ -74,7 +84,11 @@ def add_record():
         """INSERT INTO consumption_records
         (building_id, timestamp, electricity_kwh)
         VALUES (%s, %s, %s)""",
-        (data["building_id"], data["timestamp"], data["electricity_kwh"])
+        (
+            data["building_id"],
+            data["timestamp"],
+            data["electricity_kwh"]
+        )
     )
 
     connection.commit()
@@ -87,6 +101,7 @@ def add_record():
         "message": "Record added successfully",
         "record_id": record_id
     }), 201
+
 
 if __name__ == "__main__":
     app.run(port=5050, debug=False)
