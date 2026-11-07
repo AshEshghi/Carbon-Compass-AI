@@ -54,7 +54,7 @@ The subsystem includes `EmissionFactor`, `BaseCalculator`, `CarbonCalculator`, `
 
 `CarbonCalculator` inherits from the abstract `BaseCalculator` class. It uses validated consumption records and emission factors to create calculated emission results, which are then processed by `AnalyticsService`.
 
-![Carbon Calculation and Analytics UML](Homeworkassignment1/Ashley/UML_Diagrams/Carbon_Analytics_UML.png)
+![Carbon Calculation and Analytics UML](Homeworkassignment1/Ashley/UML%20Diagrams/Carbon_Analytics_UML.png)
 
 ### 4.3 AI Sustainability Assistant — Nooshin
 
@@ -62,7 +62,7 @@ The subsystem contains `AIService`, `ContextProvider`, and `ChatMessage`.
 
 These classes support preparing sustainability context, generating AI responses, and representing chat messages. `ContextProvider` also depends on the Data Management interface.
 
-![AI Sustainability Assistant UML](Homeworkassignment1/UML_Diagrams/AI_Assistant_UML.png)
+![AI Sustainability Assistant UML](Homeworkassignment1/Nooshin/AI-Assistant-UML.png)
 
 ### 4.4 Web Interface — Büşra
 
@@ -70,7 +70,7 @@ The subsystem contains `AppController`, `DashboardPage`, `DataUploadPage`, `Anal
 
 These classes organize navigation, activity upload, emissions visualization, and interaction with the AI Assistant. The Streamlit `app.py` module serves as the interface entry point.
 
-![Web Interface UML](Homeworkassignment1/UML_Diagrams/Web_Interface_UML.png)
+![Web Interface UML](Homeworkassignment1/Busra/Web_Interface_UML.drawio.png)
 
 ## 5. Object-Oriented Design
 
