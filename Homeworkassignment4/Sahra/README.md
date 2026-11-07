@@ -1,7 +1,7 @@
 # Hometask 4 – Exception Handling and Unit Tests
 
 **Project:** Carbon Compass AI  
-**Student:** Sahra Özçelik  
+**Student:** Sahra Ozcelik  
 **Subsystem:** Data Management
 
 ## Overview
