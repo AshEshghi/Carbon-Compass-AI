@@ -151,7 +151,7 @@ The current uploaded analytics test file defines **six tests** for totals, empty
 
 ## 9. Team Video Presentation
 
-**Unified team presentation: [https://drive.google.com/file/d/1zq2NoJae4KMYpOdRvpMNgbvwfH-8sbTN/view?usp=sharing]**
+**Unified team presentation: [https://drive.google.com/file/d/18LRece7zSFtArptp6P7sbpyOxPHfku5Z/view]**
 
 ## 10. Submission Status and Limitations
 
