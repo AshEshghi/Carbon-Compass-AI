@@ -1,61 +1,171 @@
-
 # Carbon Compass AI
 
-Enterprise Carbon Footprint Tracker & AI Assistant
+### Enterprise Carbon Footprint Tracker & AI Assistant
 
-## Project Overview
+**FH Dortmund · Python Compact Course · Homework Assignment 3 — Web APIs & Database Access Layers**
 
-A Python application for tracking building electricity
-consumption, estimating carbon emissions, analyzing
-monthly trends, and providing AI sustainability advice.
+## 1. Project Overview
 
-## Team Members
+Carbon Compass AI is a Python-based project for recording building electricity consumption, calculating estimated associated carbon emissions, and making the results available to a future web dashboard and AI sustainability assistant.
 
-| Member | Subsystem |
-|---|---|
-| Sahra Ozcelik | Data Management |
-| Ashley Eshghi | Carbon Calculation & Analytics |
-| Nooshin Janizadeh | AI Sustainability Assistant |
-| Büsra Aydin | Web Interface |
+In **Homework Assignment 3**, the team focuses on web APIs and database access using **Flask** and **MySQL**. The current demonstration uses electricity data for a building. Sahra's Data Management component adds and retrieves records, while Ashley's Carbon Calculation & Analytics component reads the same data and returns calculated summaries as JSON.
 
-## Technologies
+The emissions factor of **0.4 kg CO₂e/kWh is hypothetical and for demonstration only**, not an official factor for corporate carbon reporting.
 
-- Python
-- Flask
-- SQLAlchemy
-- SQLite / MySQL
-- Pandas and NumPy
-- Streamlit and Plotly
-- OpenAI API
-- Pytest
-- Docker
+## 2. Team Overview
 
-## System Design
+| Team member | Assigned subsystem | Responsibility |
+|---|---|---|
+| Sahra Özçelik | Data Management | Flask endpoints for inserting and retrieving electricity records in MySQL |
+| Ashley Eshghi | Carbon Calculation & Analytics | Emissions calculations, monthly summaries, and the Flask analytics endpoint |
+| Nooshin Janizadeh | AI Sustainability Assistant | AI-based explanations and sustainability recommendations in the wider project |
+| Büşra Aydın | Web Interface | User forms, dashboards, and presentation of the results in the wider project |
 
-Add the four implemented UML class diagrams here.
+The endpoints documented below are the **verified design of the Data Management and Analytics contributions**. Other subsystems are listed as team responsibilities; this README does not claim their HA3 integration is complete.
 
-GitHub supports rendering Mermaid diagrams in Markdown.
+## 3. Architecture and Data Flow
 
-## Installation and Running
+```mermaid
+flowchart LR
+    U["Client / future Streamlit UI"] -->|"POST /records or GET /records"| F["Flask API"]
+    U -->|"GET /analytics?building_id=1"| F
+    F -->|"Insert / select records"| D[("MySQL: carbon_compass")]
+    D -->|"Consumption records"| A["AnalyticsService"]
+    A -->|"Monthly totals and CO₂e estimates"| F
+    F -->|"JSON response"| U
+```
 
-Add verified installation commands and instructions
-for starting the application here.
+**Implementation approach:** The components can run separately while being developed. For the integrated application, Ashley's `analytics_bp` Flask Blueprint is registered in Sahra's Flask app so the routes share one server and database.
 
-## Homework Assignments
+## 4. Implemented API Components
 
-- HA1: Object-Oriented Programming
-- HA2: Real-Time Data Processing
-- HA3: Web APIs and Database Access
-- HA4: Exception Handling and Unit Tests
+| Endpoint | Method | Subsystem | Purpose |
+|---|---|---|---|
+| `/` | GET | Data Management | Show a basic API status message |
+| `/records` | GET | Data Management | Retrieve electricity consumption records |
+| `/records` | POST | Data Management | Add a new electricity consumption record |
+| `/analytics?building_id=1` | GET | Carbon Calculation & Analytics | Calculate totals and monthly emissions for a selected building |
 
-## Team Video Presentation
+The analytics endpoint returns fields such as `building_id`, `record_count`, `total_electricity_kwh`, `emissions_kg_co2e`, `emissions_tonnes_co2e`, and a `monthly` list. It also identifies the example emission factor in its response.
 
-[Watch our presentation](INSERT_VIDEO_URL_HERE)
+### Analytics design
 
-## Testing
+```mermaid
+classDiagram
+    class AnalyticsService {
+        +emission_factor: float
+        +__init__(emission_factor)
+        +summarize(records, building_id)
+    }
+    class analytics_bp {
+        <<Flask Blueprint>>
+        +GET /analytics
+        +get_analytics()
+    }
+    analytics_bp ..> AnalyticsService : creates and uses
+    analytics_bp ..> MySQL : reads consumption_records
+```
 
-Document how to run the automated tests.
+The diagram above shows the main HA3 responsibilities. `analytics_bp` is a **Flask Blueprint object**, not a Python class. It is drawn as a component for readability rather than as a literal class definition.
 
-## Project Status
+## 5. Shared MySQL Database
 
-Development in progress.
+The analytics subsystem **does not create or modify tables**. It reads Sahra's existing `carbon_compass` database and `consumption_records` table.
+
+```sql
+CREATE DATABASE IF NOT EXISTS carbon_compass;
+USE carbon_compass;
+
+CREATE TABLE IF NOT EXISTS consumption_records (
+    record_id INT AUTO_INCREMENT PRIMARY KEY,
+    building_id INT NOT NULL,
+    timestamp DATE NOT NULL,
+    electricity_kwh DOUBLE NOT NULL
+);
+```
+
+Example record for testing:
+
+```json
+{
+  "building_id": 1,
+  "timestamp": "2026-01-02",
+  "electricity_kwh": 150.0
+}
+```
+
+For an illustrative input of **150 kWh** and a hypothetical factor of **0.4 kg CO₂e/kWh**, the estimated emissions are **60 kg CO₂e**, or **0.06 tonnes CO₂e**.
+
+## 6. Technologies
+
+- **Python** — application logic and calculations
+- **Flask** — API endpoints and JSON responses
+- **MySQL Community Server** — shared database
+- **mysql-connector-python** — Python–MySQL connection
+- **`unittest` and `unittest.mock`** — automated tests and simulated database access
+
+## 7. Repository Organization
+
+```text
+Homeworkassignment3/
+├── Sahra/                             # Data Management contribution
+├── Ashley/
+│   ├── Carbon_Calculation_Analytics/
+│   │   ├── analytics_api.py            # AnalyticsService + Flask Blueprint
+│   │   └── test_analytics.py           # Calculation and mocked API tests
+│   ├── README.md                       # Individual documentation
+│   └── requirements.txt                # Python dependencies, if included
+├── Nooshin/                           # AI Assistant contribution
+└── Busra/                             # Web Interface contribution
+```
+
+Each student maintains their own contribution. The group README describes the shared project and integration plan.
+
+## 8. Setup and Testing
+
+Install Python, MySQL Community Server, and the Python packages **Flask** and **mysql-connector-python**. MySQL Workbench is optional but useful for managing the database.
+
+From the repository root, install the packages into your chosen Python environment:
+
+```powershell
+python -m pip install Flask mysql-connector-python
+```
+
+Create the MySQL database and table using the SQL above. To run Ashley's standalone analytics endpoint, open her subsystem folder in a terminal and execute:
+
+```powershell
+python analytics_api.py
+```
+
+Enter your **own local MySQL password** when prompted, then visit:
+
+`http://127.0.0.1:5051/analytics?building_id=1`
+
+The unit tests use mocked database connections, so **MySQL Server does not have to be running for the tests**. From the folder containing Ashley's `analytics_api.py` and `test_analytics.py`:
+
+```powershell
+python -m unittest -v test_analytics.py
+```
+
+The current uploaded analytics test file defines **six tests** for totals, empty data, invalid consumption, invalid factors, a mocked Flask database request, and invalid building IDs. A passing live MySQL integration test must be verified separately on a machine with MySQL running.
+
+## 9. Integration With the Data Management API
+
+After ensuring that Python can import Ashley's `analytics_api.py`, Sahra can register the exported Flask Blueprint in her existing app:
+
+```python
+# Import analytics_bp from Ashley's analytics_api module.
+app.config["MYSQL_PASSWORD"] = password
+app.register_blueprint(analytics_bp)
+```
+
+The actual import statement depends on the final repository layout. Once registered, both `/records` and `/analytics` can be served through **port 5050**. The standalone analytics server on port 5051 is no longer needed.
+
+Both routes use the same MySQL database, but the shared server and live database operations should be tested together before the group claims full integration.
+
+## 10. Submission Status and Limitations
+
+This HA3 contribution demonstrates the Flask/MySQL data-access design and the carbon analytics route. A local, configured MySQL server is required for a complete live demonstration. The analytics code uses a hypothetical emissions factor and should not be used for official carbon accounting without verified factors and an agreed methodology.
+
+**GitHub submission branch:** `Homeworkassignment003`  
+**Repository:** [Carbon-Compass-AI](https://github.com/AshEshghi/Carbon-Compass-AI/tree/Homeworkassignment003)
