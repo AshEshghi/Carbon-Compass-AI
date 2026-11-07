@@ -1,8 +1,7 @@
-
 from pathlib import Path
 import sys
 
-data_folder = Path(__file__).resolve().parent.parent / "Data_Management"
+data_folder = Path(__file__).resolve().parents[2] / "Data_Management"
 sys.path.insert(0, str(data_folder))
 
 from database_manager import DatabaseManager
