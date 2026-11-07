@@ -54,7 +54,7 @@ The subsystem includes `EmissionFactor`, `BaseCalculator`, `CarbonCalculator`, `
 
 `CarbonCalculator` inherits from the abstract `BaseCalculator` class. It uses validated consumption records and emission factors to create calculated emission results, which are then processed by `AnalyticsService`.
 
-![Carbon Calculation and Analytics UML](Homeworkassignment1/Ashley/UML Diagrams/Carbon_Analytics_UML.png)
+![Carbon Calculation and Analytics UML](Homeworkassignment1/Ashley/UMLDiagrams/Carbon_Analytics_UML.png)
 
 ### 4.3 AI Sustainability Assistant — Nooshin
 
