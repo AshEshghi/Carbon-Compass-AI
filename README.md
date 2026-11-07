@@ -91,8 +91,6 @@ classDiagram
     ScopeFilter ..> EmissionTransformer : passes accepted records
 ```
 
-[View Ashley's original UML image](Homeworkassignment2/Ashley/UML%20Diagrams/HA2_Ashley.png)
-
 ### 4.3 AI Sustainability Assistant — Nooshin
 
 `AssistantProcessor` defines a common processing interface. `InsightProcessor` uses an AI service to prepare an explanation using calculated consumption and emissions data.
