@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-11-13T11:30:00.000Z" agent="ChatGPT" version="24.7.17" type="device">
+  <diagram id="ai-assistant-uml" name="AI Assistant UML">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="AI Assistant Subsystem – UML Class Diagram" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#101828;" vertex="1" parent="1">
+          <mxGeometry x="330" y="20" width="900" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="data_api" value="&lt;b&gt;&amp;lt;&amp;lt;external&amp;gt;&amp;gt; DataManagementAPI&lt;/b&gt;&lt;hr&gt;GET /records&lt;br&gt;Flask API – port 5050" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4677b8;fontColor=#102a43;align=center;verticalAlign=middle;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="280" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="ki_api" value="&lt;b&gt;&amp;lt;&amp;lt;external&amp;gt;&amp;gt; KI:connect API&lt;/b&gt;&lt;hr&gt;OpenAI-compatible endpoint&lt;br&gt;Model: Qwen3.8 27B" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4677b8;fontColor=#102a43;align=center;verticalAlign=middle;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="110" width="280" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="app" value="&lt;b&gt;AIAssistantApp&lt;/b&gt;&lt;hr&gt;+ home()&lt;br&gt;+ get_records()&lt;br&gt;+ handle_ai_error()&lt;br&gt;+ handle_unexpected_error()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#344054;fontColor=#101828;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="570" y="100" width="330" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="context" value="&lt;b&gt;ContextProvider&lt;/b&gt;&lt;hr&gt;- database_manager&lt;br&gt;- emissions&lt;br&gt;- api_url&lt;hr&gt;+ get_database_manager()&lt;br&gt;+ set_database_manager()&lt;br&gt;+ get_emissions()&lt;br&gt;+ set_emissions()&lt;br&gt;+ get_api_records()&lt;br&gt;+ get_main_dataset()&lt;br&gt;+ get_consumption()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#344054;fontColor=#101828;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="350" width="360" height="245" as="geometry"/>
+        </mxCell>
+        <mxCell id="insight" value="&lt;b&gt;InsightProcessor&lt;/b&gt;&lt;hr&gt;- ai_service&lt;hr&gt;+ process(record)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#344054;fontColor=#101828;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="380" width="300" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="service" value="&lt;b&gt;AIService&lt;/b&gt;&lt;hr&gt;- model&lt;br&gt;- client&lt;hr&gt;+ get_model()&lt;br&gt;+ set_model()&lt;br&gt;+ build_prompt(consumption, emissions)&lt;br&gt;+ generate_response(prompt)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#344054;fontColor=#101828;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="350" width="410" height="185" as="geometry"/>
+        </mxCell>
+        <mxCell id="chat" value="&lt;b&gt;ChatMessage&lt;/b&gt;&lt;hr&gt;- role&lt;br&gt;- content&lt;hr&gt;+ getters / setters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#344054;fontColor=#101828;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="640" width="410" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="abstract" value="&lt;b&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt; AssistantProcessor&lt;/i&gt;&lt;/b&gt;&lt;hr&gt;+ process(record) {abstract}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#344054;fontColor=#101828;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="650" width="300" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="filter" value="&lt;b&gt;CarbonRecordFilter&lt;/b&gt;&lt;hr&gt;+ process(record)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#344054;fontColor=#101828;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="810" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="pipeline" value="&lt;b&gt;Pipeline&lt;/b&gt;&lt;hr&gt;- processors&lt;hr&gt;+ add_processor(processor)&lt;br&gt;+ process(record)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#344054;fontColor=#101828;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="830" width="300" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="stream" value="&lt;b&gt;StreamProcessor&lt;/b&gt;&lt;hr&gt;- events&lt;br&gt;- index&lt;hr&gt;+ __iter__()&lt;br&gt;+ __next__()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#344054;fontColor=#101828;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="830" width="300" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475467;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="app" target="context">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="HTTP GET /records" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475467;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="context" target="data_api">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="invokes analysis" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475467;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="app" target="insight">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475467;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="insight" target="service">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="chat completion request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475467;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="service" target="ki_api">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="uses message object" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;dashed=1;strokeColor=#667085;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="service" target="chat">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="inherits" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;strokeColor=#344054;fontSize=10;" edge="1" parent="1" source="filter" target="abstract">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="inherits" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;strokeColor=#344054;fontSize=10;" edge="1" parent="1" source="insight" target="abstract">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="contains / manages" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;dashed=1;strokeColor=#667085;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="pipeline" target="abstract">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" value="stream input" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;dashed=1;strokeColor=#667085;fontSize=10;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="pipeline" target="stream">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="&lt;b&gt;Implementation note&lt;/b&gt;&lt;br&gt;This diagram is based on the project structure and code details shared so far. Verify exact class members and relationships against the final source files before submission." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#fff8db;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="390" y="990" width="850" height="65" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
