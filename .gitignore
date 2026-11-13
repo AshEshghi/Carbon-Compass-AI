@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+old_ai_backup/
+Data_Management/app_backup.txt
