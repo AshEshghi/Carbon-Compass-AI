@@ -191,6 +191,10 @@ python -m unittest Carbon_Calculation_Analytics.test_carbon_analytics -v
 - Production deployment would require additional access control, migrations, secret management, monitoring and end-to-end tests.
 - Real `.env` values, keys and passwords must **never** be committed. The repository includes only `.env.example`.
 
+## Team Video Presentation
+
+**Unified team presentation: [https://drive.google.com/file/d/13YX0PAVslJWGIOmQHF9JkD50UKfRtI-8/view?usp=sharing]**
+
 ## Contribution workflow
 
 Keep feature work in individual branches, use pull requests for review and run the relevant tests before merging into `main`. Documentation and UML assets should be updated when their corresponding implementation changes.
