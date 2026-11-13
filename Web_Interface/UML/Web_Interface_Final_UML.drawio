@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Web Interface Class Diagram" id="zh80KitZ821CMHa3IKCu">
+    <mxGraphModel dx="964" dy="671" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1SxkFC820IiRabe9BbXH-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontStyle=1;fillColor=#FFEDD5;strokeColor=#EA580C;spacing=8;fontColor=#18212F;" value="AppController" vertex="1">
+          <mxGeometry height="42" width="410" x="62" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#EA580C;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ current_page: str&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="46" width="410" x="62" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#EA580C;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ __init__(current_page: str)&lt;/div&gt;&lt;div&gt;+ get_current_page(): str&lt;/div&gt;&lt;div&gt;+ set_current_page(page: str): None&lt;/div&gt;&lt;div&gt;+ route_page(): str&lt;/div&gt;&lt;div&gt;+ call_service(service, *args): Any&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="122" width="410" x="62" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontStyle=1;fillColor=#DBEAFE;strokeColor=#2563EB;spacing=8;fontColor=#18212F;" value="DashboardPage" vertex="1">
+          <mxGeometry height="42" width="410" x="510" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#2563EB;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ title: str&lt;/div&gt;&lt;div&gt;+ total_kwh: number&lt;/div&gt;&lt;div&gt;+ total_co2: number&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="83" width="410" x="510" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#2563EB;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ __init__(title, total_kwh, total_co2)&lt;/div&gt;&lt;div&gt;+ get_title(): str&lt;/div&gt;&lt;div&gt;+ set_title(title): None&lt;/div&gt;&lt;div&gt;+ get_total_kwh(): number&lt;/div&gt;&lt;div&gt;+ set_total_kwh(value): None&lt;/div&gt;&lt;div&gt;+ get_total_co2(): number&lt;/div&gt;&lt;div&gt;+ set_total_co2(value): None&lt;/div&gt;&lt;div&gt;+ render_kpis(): None&lt;/div&gt;&lt;div&gt;+ render_summary(): None&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="202" width="410" x="510" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontStyle=1;fillColor=#DCFCE7;strokeColor=#16A34A;spacing=8;fontColor=#18212F;" value="DataUploadPage" vertex="1">
+          <mxGeometry height="42" width="440" x="960" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#16A34A;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ file_name: str&lt;/div&gt;&lt;div&gt;+ validation_result: dict | None&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="63" width="440" x="960" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#16A34A;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ __init__(file_name: str)&lt;/div&gt;&lt;div&gt;+ get_file_name(): str&lt;/div&gt;&lt;div&gt;+ set_file_name(file_name): None&lt;/div&gt;&lt;div&gt;+ get_validation_result(): dict | None&lt;/div&gt;&lt;div&gt;+ set_validation_result(result): None&lt;/div&gt;&lt;div&gt;+ render_upload(): str&lt;/div&gt;&lt;div&gt;+ render_validation(): dict | str&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="162" width="440" x="960" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontStyle=1;fillColor=#F3E8FF;strokeColor=#9333EA;spacing=8;fontColor=#18212F;" value="AnalyticsPage" vertex="1">
+          <mxGeometry height="42" width="440" x="270" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#9333EA;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ selected_period: str&lt;/div&gt;&lt;div&gt;+ emissions: list&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="63" width="440" x="270" y="687" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#9333EA;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ __init__(selected_period: str)&lt;/div&gt;&lt;div&gt;+ get_selected_period(): str&lt;/div&gt;&lt;div&gt;+ set_selected_period(period): None&lt;/div&gt;&lt;div&gt;+ get_emissions(): list&lt;/div&gt;&lt;div&gt;+ set_emissions(emissions): None&lt;/div&gt;&lt;div&gt;+ select_period(): str&lt;/div&gt;&lt;div&gt;+ render_charts(): list&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="162" width="440" x="270" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=17;fontStyle=1;fillColor=#FCE7F3;strokeColor=#DB2777;spacing=8;fontColor=#18212F;" value="AssistantPage" vertex="1">
+          <mxGeometry height="42" width="440" x="760" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#DB2777;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ question: str&lt;/div&gt;&lt;div&gt;+ response: str&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="63" width="440" x="760" y="687" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fillColor=#FFFFFF;strokeColor=#DB2777;spacingLeft=12;spacingTop=8;fontColor=#18212F;" value="&lt;div&gt;&lt;div&gt;+ __init__(question: str)&lt;/div&gt;&lt;div&gt;+ get_question(): str&lt;/div&gt;&lt;div&gt;+ set_question(question): None&lt;/div&gt;&lt;div&gt;+ get_response(): str&lt;/div&gt;&lt;div&gt;+ set_response(response): None&lt;/div&gt;&lt;div&gt;+ submit_question(): str&lt;/div&gt;&lt;div&gt;+ render_response(): str&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="162" width="440" x="760" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-16" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=22;fontStyle=1;" value="Carbon Compass AI — Web Interface | UML Class Diagram" vertex="1">
+          <mxGeometry height="46" width="990" x="60" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-17" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontSize=16;fontStyle=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=2;fontColor=#18212F;" value="«module» app.py&#xa;Streamlit entry point" vertex="1">
+          <mxGeometry height="76" width="330" x="570" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-18" edge="1" parent="1" source="1SxkFC820IiRabe9BbXH-17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;dashPattern=7 5;endArrow=open;endFill=0;strokeColor=#64748B;strokeWidth=2;fontSize=12;fontColor=#475569;labelBackgroundColor=#FFFFFF;" target="1SxkFC820IiRabe9BbXH-1" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-19" edge="1" parent="1" source="1SxkFC820IiRabe9BbXH-17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;dashPattern=7 5;endArrow=open;endFill=0;strokeColor=#64748B;strokeWidth=2;fontSize=12;fontColor=#475569;labelBackgroundColor=#FFFFFF;" target="1SxkFC820IiRabe9BbXH-4" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-20" edge="1" parent="1" source="1SxkFC820IiRabe9BbXH-17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;dashPattern=7 5;endArrow=open;endFill=0;strokeColor=#64748B;strokeWidth=2;fontSize=12;fontColor=#475569;labelBackgroundColor=#FFFFFF;" target="1SxkFC820IiRabe9BbXH-7" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-21" edge="1" parent="1" source="1SxkFC820IiRabe9BbXH-17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;dashPattern=7 5;endArrow=open;endFill=0;strokeColor=#64748B;strokeWidth=2;fontSize=12;fontColor=#475569;labelBackgroundColor=#FFFFFF;" target="1SxkFC820IiRabe9BbXH-10" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1SxkFC820IiRabe9BbXH-22" edge="1" parent="1" source="1SxkFC820IiRabe9BbXH-17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;dashPattern=7 5;endArrow=open;endFill=0;strokeColor=#64748B;strokeWidth=2;fontSize=12;fontColor=#475569;labelBackgroundColor=#FFFFFF;" target="1SxkFC820IiRabe9BbXH-13" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

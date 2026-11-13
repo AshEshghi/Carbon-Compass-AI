@@ -1,0 +1,9 @@
+streamlit
+flask
+pandas
+altair
+requests
+mysql-connector-python
+openai
+python-dotenv
+pytest

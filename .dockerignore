@@ -1,0 +1,7 @@
+.git
+.venv
+venv
+__pycache__
+*.pyc
+.env
+ORIGINAL_MEMBER_SUBMISSIONS_UNCHANGED.zip

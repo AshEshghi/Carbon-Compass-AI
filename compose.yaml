@@ -1,0 +1,48 @@
+
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set in .env}
+      MYSQL_DATABASE: carbon_compass
+      MYSQL_USER: carbon_user
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set in .env}
+    volumes:
+      - carbon_mysql_data:/var/lib/mysql
+      - ./Data_Management/carbon_compass_mysql.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+
+  backend:
+    build: .
+    command: python -m Data_Management.app
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: carbon_user
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set in .env}
+      MYSQL_DATABASE: carbon_compass
+      FLASK_HOST: 0.0.0.0
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:5051:5050"
+
+  web:
+    build: .
+    command: python -m streamlit run Web_Interface/app.py --server.address=0.0.0.0 --server.port=8501
+    environment:
+      DATA_API_BASE_URL: http://backend:5050
+      KICONNECT_API_KEY: ${KICONNECT_API_KEY:-}
+      KICONNECT_BASE_URL: ${KICONNECT_BASE_URL:-}
+      KICONNECT_MODEL: ${KICONNECT_MODEL:-}
+    depends_on:
+      - backend
+    ports:
+      - "127.0.0.1:8501:8501"
+
+volumes:
+  carbon_mysql_data:
