@@ -275,21 +275,63 @@ elif page == "AI Assistant":
 
                  
 
+                
                 prompt += f"""
-
                 USER QUESTION:
                 {assistant.get_question()}
 
-                Please answer the user's question using only the
-                verified electricity consumption and carbon emissions
-                provided above. Do not invent numerical values.
+                IMPORTANT INSTRUCTIONS:
+                1. Start your answer with the verified electricity consumption
+                   in kWh and carbon emissions in kg CO2e.
+                2. Only use the data provided in this prompt.
+                3. Do not describe consumption as high, low, good, or bad
+                   unless comparison data is available.
+                4. Do not invent comparisons, percentages, savings,
+                   predictions, or additional numerical values.
+                5. Clearly distinguish verified data from general recommendations.
+                6. Explain that the emissions are calculated using a
+                   hypothetical emission factor, not an official factor.
+                7. Provide practical sustainability recommendations,
+                   without claiming specific numerical savings.
+                8. If the available data cannot answer a question,
+                   clearly explain what information is missing.
+
+                Answer the user's question clearly and concisely.
                 """
+
 
                 with st.spinner("Generating AI response..."):
                     response = ai_service.generate_response(prompt)
 
-                st.subheader("AI Response")
-                st.write(response)
+                
+                st.subheader("Verified Building Data")
+
+                st.metric(
+                    "Total Electricity Consumption",
+                    f"{summary['total_electricity_kwh']:,.2f} kWh"
+                )
+
+                st.metric(
+                    "Total Carbon Emissions",
+                    f"{summary['total_emissions_kgco2e']:,.2f} kg CO2e"
+                )
+
+                st.caption(
+                    "Carbon emissions are calculated using a hypothetical "
+                    "emission factor of 0.4 kg CO2e/kWh."
+                )
+
+                
+                if response.startswith("AI service error:"):
+                    st.error(
+                        "The AI Assistant is temporarily unavailable. "
+                        "Please try again later."
+                    )
+                else:
+                    st.subheader("AI Recommendations")
+                    st.write(response)
+
+
 
             else:
                 st.error("Please enter a question.")
